@@ -1,11 +1,11 @@
-package com.zeus.mapper;
+package com.zeus.service;
 
 import java.util.List;
 
 import com.zeus.domain.Member;
 import com.zeus.domain.MemberAuth;
 
-public interface MemberMapper {
+public interface MemberService {
 
 	// 가입(회원및 권한설정)
 	public int create(Member member) throws Exception;
