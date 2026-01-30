@@ -117,15 +117,15 @@ public class MemberController {
 		return "member/failed";
 	}
 
-//	@GetMapping("/search")
-//	public String boardSearch(Member member, Model model) {
-//		try {
-//			List<Member> memberList = memberService.search(member);
-//			model.addAttribute("memberList", memberList);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return "board/boardList";
-//	}
+	@GetMapping("/search")
+	public String memberSearch(Member member, Model model) {
+		try {
+			List<Member> memberList = memberService.search(member);
+			model.addAttribute("memberList", memberList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "member/memberList";
+	}
 
 }

@@ -18,4 +18,6 @@ public interface MemberService {
 
 	// 회원삭제 -> 비즈니스 모델(회원 테이블 삭제, 회원 권한 테이블 삭제)
 	public int delete(Member member) throws Exception;
+
+	public List<Member> search(Member member) throws Exception;
 }

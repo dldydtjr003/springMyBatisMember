@@ -65,6 +65,16 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	@Transactional
 	public int delete(Member member) throws Exception {
-		return memberMapper.delete(member);
+		int count = memberMapper.delete(member);
+		if(count > 0) {
+			memberMapper.deleteAuth(member);
+		}
+		return count;
+	}
+
+	@Override
+	public List<Member> search(Member member) throws Exception {
+		List<Member> memberList = memberMapper.search(member);
+		return memberList;
 	}
 }
