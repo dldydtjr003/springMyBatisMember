@@ -56,11 +56,11 @@
 			select mybatisMember_seq.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO mybatisMember(no, id, pw, name)
-		VALUES(#{userNo},#{id},#{pw},#{name})
+		VALUES(#{no},#{id},#{pw},#{name})
 	</insert>
 
 	<insert id="createAuth">
 		INSERT INTO mybatismemberAuth(no, auth)
-		VALUES(#{userNo},#{auth})
+		VALUES(#{no},#{auth})
 	</insert>
 </mapper>

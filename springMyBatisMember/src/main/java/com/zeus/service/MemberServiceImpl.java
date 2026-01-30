@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zeus.domain.Member;
+import com.zeus.domain.MemberAuth;
 import com.zeus.mapper.MemberMapper;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,14 +22,20 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	@Transactional
 	public int register(Member member) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int count = memberMapper.create(member);
+		if(count > 0) {
+			MemberAuth memberAuth = new MemberAuth();
+			memberAuth.setNo(member.getNo());
+			memberAuth.setAuth("ROLE_USER");
+			memberMapper.createAuth(memberAuth);
+		}
+		return count;
 	}
 
 	@Override
 	public List<Member> list() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Member> memberList = memberMapper.list();
+		return memberList;
 	}
 
 	@Override
