@@ -25,7 +25,7 @@ public class MemberController {
 	private MemberService memberService;
 
 	@GetMapping("/insertForm")
-	public String boardInsertForm(Model model) {
+	public String memberInsertForm(Model model) {
 		return "member/insertForm";
 	}
 	
@@ -56,7 +56,7 @@ public class MemberController {
 	}
 
 	@GetMapping("/detail")
-	public String boardDetail(Model model, Member m) {
+	public String memberDetail(Model model, Member m) {
 		try {
 			Member member = memberService.read(m);
 			if (member != null) {
@@ -72,7 +72,7 @@ public class MemberController {
 	}
 
 	@GetMapping("/delete")
-	public String boardDelete(Model model, Member member) {
+	public String memberDelete(Model model, Member member) {
 		try {
 			int count = memberService.delete(member);
 			if (count > 0) {
@@ -87,7 +87,7 @@ public class MemberController {
 	}
 
 	@GetMapping("/updateForm")
-	public String boardUpdateForm(Model model, Member m) {
+	public String memberUpdateForm(Model model, Member m) {
 		Member member;
 		try {
 			member = memberService.read(m);
@@ -103,7 +103,7 @@ public class MemberController {
 	}
 
 	@PostMapping("/update")
-	public String boardUpdate(Model model, Member member) {
+	public String memberUpdate(Model model, Member member) {
 		try {
 			int count = memberService.update(member);
 			if (count > 0) {

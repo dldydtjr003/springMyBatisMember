@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -148,37 +149,55 @@
 
 <div class="write-container">
     <div class="header">
-        <h1>${board.writer}님의 게시판 수정</h1>
+        <h1>${member.name}님의 회원정보 수정</h1>
     </div>
 
-    <form action="/board/update" method="post">
+	<form:form modelAttribute="member" action="/member/update" method="post">
         <div class="form-group">
-            <label for="no">작성자 번호</label>
-            <input type="text" id="no" name="no" value="${board.no}" readonly="readonly">
+            <label for="no">NO</label>
+            <input type="text" id="no" name="no" value="${member.no}" readonly="readonly">
         </div>
 			<div class="form-group">
-				<label for="writer">작성자</label> <input type="text" id="writer"
-					name="writer" value="${board.writer}" required>
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id" value="${member.id}" readonly="readonly">
+        </div>
+			<div class="form-group">
+				<label for="name">NAME</label> <input type="text" id="name"
+					name="name" value="${member.name}" required>
+			</div>
+			<div class="form-group">
+				<label for="pw">PW</label> <input type="password" id="pw"
+					name="pw" value="${member.pw}" required>
+			</div>
+			<div class="btn-form">
+				<form:hidden path="no" />
+				<form:select path="authList[0].auth">
+					<form:option value="" label="=== 선택해 주세요 ===" />
+					<form:option value="ROLE_USER" label="사용자" />
+					<form:option value="ROLE_MEMBER" label="회원" />
+					<form:option value="ROLE_ADMIN" label="관리자" />
+				</form:select>
+				<form:select path="authList[1].auth" >
+					<form:option value="" label="=== 선택해 주세요 ===" />
+					<form:option value="ROLE_USER" label="사용자" />
+					<form:option value="ROLE_MEMBER" label="회원" />
+					<form:option value="ROLE_ADMIN" label="관리자" />
+				</form:select>
+				<form:select path="authList[2].auth" >
+					<form:option value="" label="=== 선택해 주세요 ===" />
+					<form:option value="ROLE_USER" label="사용자" />
+					<form:option value="ROLE_MEMBER" label="회원" />
+					<form:option value="ROLE_ADMIN" label="관리자" />
+				</form:select>
+			
 			</div>
 
-			<div class="form-group">
-            <label for="title">제목</label>
-            <input type="text" id="title" name="title" value="${board.title}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="content">글내용</label>
-            <textarea id="content" name="content" >
-            	${board.content}
-            </textarea>
-        </div>
-
         <div class="btn-area">
-            <a href="/board/boardList" class="btn btn-cancel">게시판리스트</a>
-            <button type="submit" class="btn btn-cancel">수정전송</button>
-            <button type="reset" class="btn btn-cancel">수정취소</button>
+            <a href="/member/memberList" class="btn btn-cancel">회원 리스트</a>
+            <button type="submit" class="btn btn-cancel">회원정보 수정전송</button>
+            <button type="reset" class="btn btn-cancel">회원정보 수정취소</button>
         </div>
-    </form>
+    </form:form>
 
 </div>
 

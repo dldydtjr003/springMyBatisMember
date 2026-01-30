@@ -80,7 +80,7 @@
         font-size: 0.9rem;
         text-transform: uppercase;
         border-bottom: 1px solid #333;
-    }
+     }
 
     .t1-table td {
         padding: 15px;
@@ -172,49 +172,38 @@
     <div class="container">
     <div class="header-box">
         <h1>BOARD <span>LIST</span></h1>
-        <a href="/member/boardList" class="btn-write">새로고침</a>
-        <a href="/member/insertForm" class="btn-write">게시판입력</a>
+        <a href="/member/memberList" class="btn-write">회원 리스트</a>
+        <a href="/member/insertForm" class="btn-write">회원가입</a>
     </div>
 
-    <div class="search-container">
-        <form action="/member/search" method="get" class="search-form">
-            <select name="searchType" class="search-select">
-                <option value="title">TITLE</option>
-                <option value="writer">WRITER</option>
-                <option value="content">CONTENT</option>
-            </select>
-            <input type="text" name="keyword" class="search-input" placeholder="Search mission...">
-            <button type="submit" class="btn-search">SEARCH</button>
-        </form>
-    </div>
-
-
-    <table class="t1-table">
+      <table class="t1-table">
         <thead>
             <tr>
                 <th width="10%">No</th>
-                <th width="50%">Title</th>
-                <th width="15%">Writer</th>
-                <th width="25%">Date</th>
+                <th width="20%">ID</th>
+                <th width="20%">PASSWORD</th>
+                <th width="20%">NAME</th>
+                <th width="30%">DATE</th>
             </tr>
         </thead>
         <tbody>
             <c:choose>
-                <c:when test="${not empty boardList}">
-                    <c:forEach var="board" items="${boardList}">
+                <c:when test="${not empty memberList}">
+                    <c:forEach var="member" items="${memberList}">
                         <tr>
-                            <td>${board.no}</td>
+                            <td>${member.no}</td>
                             <td class="title-cell">
-                                <a href="/board/detail?no=${board.no}">${board.title}</a>
+                                <a href="/member/detail?no=${member.no}">${member.id}</a>
                             </td>
-                            <td>${board.writer}</td>
-                            <td><fmt:formatDate value="${board.regDate}" pattern="yyyy.MM.dd" /></td>
+                            <td>${member.pw}</td>
+                            <td>${member.name}</td>
+                            <td><fmt:formatDate value="${member.regDate}" pattern="yyyy.MM.dd" /></td>
                         </tr>
                     </c:forEach>
                 </c:when>
                 <c:otherwise>
                     <tr>
-                        <td colspan="4" style="padding: 50px; color: #555;">작성된 게시글이 없습니다.</td>
+                        <td colspan="5" style="padding: 50px; color: #555;">등록된 회원이 없습니다.</td>
                     </tr>
                 </c:otherwise>
             </c:choose>

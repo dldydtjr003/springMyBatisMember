@@ -98,7 +98,7 @@ body {
 		</div>
 		<div class="btn-area">
            <a href = "/member/insertForm"><button class="btn btn-submit">회원 가입</button></a>
-           <a href = "/member/boardList"><button class="btn btn-submit">회원 리스트</button></a>
+           <a href = "/member/memberList"><button class="btn btn-submit">회원 리스트</button></a>
         </div>
 	</div>
 
